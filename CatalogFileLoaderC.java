@@ -8,6 +8,7 @@ import ru.itmo.exceptions.ItemAlreadyExistsException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
 //1)	Добавьте в пакет ru.itmo.client новый класс CatalogFileLoader,
@@ -44,6 +45,14 @@ class CatalogFileLoader implements CatalogLoader {
             e.printStackTrace();
             throw new CatalogLoadException();
         }
+        try {
+            fis.close(); //закрываем файл
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
     }
 }
+
+
 
