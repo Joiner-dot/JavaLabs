@@ -61,6 +61,16 @@ public class FoodItem extends GenericItem implements Cloneable {
         return res;
     }
 
+    public boolean hashEqual(Object o) {
+        boolean res = false;
+        if (o instanceof FoodItem) {
+            FoodItem item = (FoodItem) o;
+            if (this.hashCode() == item.hashCode()) {
+                res = true;
+            }
+        }
+        return res;
+    }
     void printAll() {
         System.out.printf("ID: %d , Name: %-20s , price:%5.2f , ru.billing.stocklist.Category: %-20s , expires: %d , ", this.getID(), this.getName(), this.getPrice(), this.categ, this.expires);
         System.out.printf("Date of income: " + this.dateOfIncome.toString() + "\n");
