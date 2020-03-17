@@ -5,12 +5,14 @@ import ru.itmo.exceptions.ItemAlreadyExistsException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ItemCatalog {
-    private HashMap<Integer, GenericItem> catalog =
+    private Map<Integer, GenericItem> catalog =
             new HashMap<Integer,GenericItem>();
-    private ArrayList<GenericItem> ALCatalog =
-            new ArrayList<GenericItem>();
+    private List<GenericItem> ALCatalog =
+            new ArrayList<GenericItem>(); //видимо , так, хотя так было прямо в задании написано, понято-принято
     //Обе эти коллекции будут хранить один и тот
     //же список товаров. Коллекция HashMap более
     // оптимальна для последующего поиска товаров
@@ -55,6 +57,13 @@ public class ItemCatalog {
         }
         return null;
     }
+
+
+
+
+
+}
+
 
 
 
