@@ -90,6 +90,17 @@ public class GenericItem implements Cloneable {
 
         return res;
     }
+    public boolean hashEqual(Object o) {
+        boolean res = false;
+        if (o instanceof GenericItem) {
+            GenericItem item = (GenericItem)o;
+            if (this.hashCode() == item.hashCode()) {
+                res = true;
+            }
+        }
+
+        return res;
+    }
 
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
