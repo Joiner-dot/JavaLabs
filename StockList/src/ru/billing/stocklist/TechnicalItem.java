@@ -35,6 +35,16 @@ public class TechnicalItem extends GenericItem implements Cloneable {
 
         return res;
     }
+    public boolean hashEqual(Object o) {
+        boolean res = false;
+        if (o instanceof TechnicalItem) {
+            TechnicalItem item = (TechnicalItem) o;
+            if (this.hashCode() == item.hashCode()) {
+                res = true;
+            }
+        }
+        return res;
+    }
 
     public String toString() {
         String str = "ID: " + this.getID()+ ", Name: " + this.getName() + ", price: " + this.getPrice() + ", type: " + this.getType() + ", category: " + this.categ + ", warranty time: " + this.warrantyTime;
