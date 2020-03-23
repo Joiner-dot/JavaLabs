@@ -79,10 +79,11 @@ public class GenericItem implements Cloneable {
         System.out.printf("ID: %d , Name: %-20s , price:%5.2f , ru.billing.stocklist.Category: %-20s \n", this.ID, this.name, this.price, this.categ);
     }
 
+    @Override
     public boolean equals(Object o) {
         boolean res = false;
         if (o instanceof GenericItem) {
-            GenericItem item = (GenericItem)o;
+            GenericItem item = (GenericItem) o;
             if (this.ID == item.ID && this.name == item.name && this.price == item.price && this.categ == item.categ) {
                 res = true;
             }
@@ -90,16 +91,16 @@ public class GenericItem implements Cloneable {
 
         return res;
     }
-    public boolean hashEqual(Object o) {
-        boolean res = false;
-        if (o instanceof GenericItem) {
-            GenericItem item = (GenericItem)o;
-            if (this.hashCode() == item.hashCode()) {
-                res = true;
-            }
-        }
-
-        return res;
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ID;
+        result = prime * result + name.hashCode();
+        result = prime * result + (String.valueOf(price)).hashCode();
+        result = prime * result + type.hashCode();
+        result = prime * result + categ.hashCode();
+        return result;
     }
 
     public Object clone() throws CloneNotSupportedException {
