@@ -80,6 +80,18 @@ public class GenericItem implements Cloneable {
     }
 
  @Override
+    public boolean equals(Object o) {
+        boolean res = false;
+        if (o instanceof GenericItem) {
+            GenericItem item = (GenericItem) o;
+            if (this.ID == item.ID && this.name == item.name && this.price == item.price && this.categ == item.categ) {
+                res = true;
+            }
+        }
+
+        return res;
+    }
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -90,6 +102,7 @@ public class GenericItem implements Cloneable {
         result = prime * result + categ.hashCode();
         return result;
     }
+
 
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
