@@ -24,6 +24,7 @@ public class TechnicalItem extends GenericItem implements Cloneable {
         System.out.printf("ID: %d , Name: %-20s , price:%5.2f , ru.billing.stocklist.Category: %-20s , warranty time: %d \n", this.getID(), this.getName(), this.getPrice(), this.categ, this.warrantyTime);
     }
 
+@Override
     public boolean equals(Object o) {
         boolean res = false;
         if (o instanceof TechnicalItem) {
@@ -34,6 +35,13 @@ public class TechnicalItem extends GenericItem implements Cloneable {
         }
 
         return res;
+    }
+    @Override
+    public int hashCode() {
+        int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + warrantyTime;
+        return result;
     }
 
     public String toString() {
