@@ -20,17 +20,17 @@ class CatalogFileLoader implements CatalogLoader {
     public CatalogFileLoader(String fileName) {
         this.fileName = fileName;
     }
-    public void load(ItemCatalog cat) throws CatalogLoadException {
+    public void load(ItemCatalog cat) throws CatalogLoadException, IOException {
         File f = new File(fileName);
-        FileInputStream fis;
+        //FileInputStream fis = null;
         String line;
-        try {
-            fis = new FileInputStream(f);
+        try (FileInputStream fis = new FileInputStream(f)) {
+            //fis = new FileInputStream(f);
             Scanner s = new Scanner(fis);
 
             while(s.hasNextLine()){
                 line = s.nextLine();
-                if(line.length()==0) break;
+                if(line.length() == 0) break;
                 String[] item_fld = line.split(";");
                 String name = item_fld[0];
                 float price = Float.parseFloat(item_fld[1]);
@@ -45,14 +45,6 @@ class CatalogFileLoader implements CatalogLoader {
             e.printStackTrace();
             throw new CatalogLoadException();
         }
-        try {
-            fis.close(); //закрываем файл
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
     }
 }
-
-
 
